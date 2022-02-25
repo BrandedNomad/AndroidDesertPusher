@@ -27,6 +27,7 @@ import androidx.core.app.ShareCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.LifecycleObserver
 import com.example.android.dessertpusher.databinding.ActivityMainBinding
+import timber.log.Timber
 
 class MainActivity : AppCompatActivity(), LifecycleObserver {
 
@@ -35,6 +36,8 @@ class MainActivity : AppCompatActivity(), LifecycleObserver {
 
     // Contains all the views
     private lateinit var binding: ActivityMainBinding
+
+    private var dessertTimer:DessertTimer = DessertTimer()
 
     /** Dessert Data **/
 
@@ -66,7 +69,8 @@ class MainActivity : AppCompatActivity(), LifecycleObserver {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        Log.i("MainActivity", "onCreate called")
+
+        Timber.i("onCreate called")
 
         // Use Data Binding to get reference to the views
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
@@ -85,32 +89,38 @@ class MainActivity : AppCompatActivity(), LifecycleObserver {
 
     override fun onStart() {
         super.onStart()
-        Log.i("MainActivity", "onStart method called")
+        dessertTimer.startTimer()
+
+        Timber.i("onStart method called")
+
+
     }
 
     override fun onResume() {
         super.onResume()
-        Log.i("MainActivity", "onResume method called")
+        dessertsSold = 0
+        Timber.i("onResume method called")
     }
 
     override fun onPause() {
         super.onPause()
-        Log.i("MainActivity", "onPause method called")
+        Timber.i("onPause method called")
     }
 
     override fun onStop() {
         super.onStop()
-        Log.i("MainActivity", "onStop method called")
+        dessertTimer.stopTimer()
+        Timber.i("onStop method called")
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        Log.i("MainActivity", "onDestroy method called")
+        Timber.i("onDestroy method called")
     }
 
     override fun onRestart() {
         super.onRestart()
-        Log.i("MainActivity", "onRestart method called")
+        Timber.i("onRestart method called")
     }
 
     /**
