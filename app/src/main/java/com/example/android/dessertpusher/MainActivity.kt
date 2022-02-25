@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity(), LifecycleObserver {
     // Contains all the views
     private lateinit var binding: ActivityMainBinding
 
-    private var dessertTimer:DessertTimer = DessertTimer()
+    private var dessertTimer:DessertTimer = DessertTimer(this.lifecycle)
 
     /** Dessert Data **/
 
@@ -89,7 +89,7 @@ class MainActivity : AppCompatActivity(), LifecycleObserver {
 
     override fun onStart() {
         super.onStart()
-        dessertTimer.startTimer()
+
 
         Timber.i("onStart method called")
 
@@ -109,7 +109,7 @@ class MainActivity : AppCompatActivity(), LifecycleObserver {
 
     override fun onStop() {
         super.onStop()
-        dessertTimer.stopTimer()
+
         Timber.i("onStop method called")
     }
 
