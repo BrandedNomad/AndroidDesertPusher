@@ -18,6 +18,7 @@ package com.example.android.dessertpusher
 
 import android.content.ActivityNotFoundException
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -65,6 +66,8 @@ class MainActivity : AppCompatActivity(), LifecycleObserver {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        Log.i("MainActivity", "onCreate called")
+
         // Use Data Binding to get reference to the views
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
@@ -78,6 +81,36 @@ class MainActivity : AppCompatActivity(), LifecycleObserver {
 
         // Make sure the correct dessert is showing
         binding.dessertButton.setImageResource(currentDessert.imageId)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Log.i("MainActivity", "onStart method called")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.i("MainActivity", "onResume method called")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.i("MainActivity", "onPause method called")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.i("MainActivity", "onStop method called")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.i("MainActivity", "onDestroy method called")
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        Log.i("MainActivity", "onRestart method called")
     }
 
     /**
